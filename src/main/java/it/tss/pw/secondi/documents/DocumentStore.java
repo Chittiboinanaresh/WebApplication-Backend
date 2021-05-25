@@ -78,8 +78,9 @@ public class DocumentStore {
 
     public void remove(Long id) {
          System.out.println("--------------------------------------------------------------Uso remove 2 DocumentStore --------------------------------------------------------------");
-        Document saved = find(id).orElseThrow(() -> new EJBException("Documento non trovato..."));
+         Document saved = find(id).orElseThrow(() -> new EJBException("Documento non trovato..."));
         try {
+             System.out.println("--------------------------------------------------------------documentPath(saved.getFile()) -> " + documentPath(saved.getFile()).toString()+" \nsaved.getFile() -> "+saved.getFile().toString()+" --------------------------------------------------------------");
             Files.delete(documentPath(saved.getFile()));
         } catch (IOException ex) {
             throw new EJBException("delete document failed...");
