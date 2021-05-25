@@ -62,6 +62,7 @@ public class DocumentStore {
         System.out.println("--------------------------------------------------------------Uso save DocumentStore--------------------------------------------------------------");
         Document saved = em.merge(d);
         try {
+            System.out.println("--------------------------------------------------------------Uso saved.getFile() -> "+ saved.getFile() +"--------------------------------------------------------------");
             Files.copy(is, documentPath(saved.getFile()),
                     StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
@@ -88,6 +89,8 @@ public class DocumentStore {
     
     private Path documentPath(String file) {
          System.out.println("--------------------------------------------------------------Uso documentPath DocumentStore --------------------------------------------------------------");
+         System.out.println("--------------------------------------------------------------Folder + file -> "+ folder +" + "+ file +"--------------------------------------------------------------");
+            
         return Paths.get(folder + file);
     }
     
